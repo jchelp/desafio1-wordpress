@@ -1,0 +1,39 @@
+version: '3.8'
+
+volumes:
+  wordpress:
+  db:
+
+networks:
+  desafio_wp_net:
+    driver: bridge
+
+services:
+
+  wordpress:
+    image: wordpress:5-php7.3-apache
+    restart: always
+    ports:
+      - 8080:80
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: wordpress_user
+      WORDPRESS_DB_PASSWORD: wordpress_pass
+      WORDPRESS_DB_NAME: desafio1_db
+    networks:
+      - desafio_wp_net  
+    volumes:
+      - wordpress:/var/www/html
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_DATABASE: desafio1_db
+      MYSQL_USER: wordpress_user
+      MYSQL_PASSWORD: wordpress_pass
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    networks:
+      - desafio_wp_net    
+    volumes:
+      - db:/var/lib/mysql
