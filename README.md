@@ -11,4 +11,4 @@ git branch -M main
 git remote add origin https://github.com/jchelp/desafio1-wordpress.git  
 git push -u origin main  
 
-3 - No site do hub.docker peguei as informações para criação do docker files  , não esquecer de crir os networks para comunicaão entre os pods.
+3 - No site do hub.docker peguei as informações para criação do docker files  , não esquecer de criar os networks para comunicaão entre os pods.
